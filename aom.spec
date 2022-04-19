@@ -1,15 +1,12 @@
-%global sover           0
-# git describe
-%global aom_version     1.0.0-2227-gcfd59e96a
+%global sover           3
+%global aom_version     3.3.0
 
 # Use commit with updated changelog for correct versioning
-%global commit          9666276accea505cd14cbcb9e3f7ff5033da9172
+%global commit          87460cef80fb03def7d97df1b47bad5432e5e2e4
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global snapshotdate    20190810
-%global prerelease      1
 
 Name:       aom
-Version:    1.0.0
+Version:    3.3.0
 Release:    1
 Summary:    Royalty-free next-generation video format
 
@@ -84,14 +81,19 @@ cd _build
 
 %files -n libaom
 %license LICENSE PATENTS
-%{_libdir}/libaom.so.%{sover}
+%{_libdir}/libaom.so.%{sover}*
+%{_libdir}/libaom.a
 
 %files -n libaom-devel
 %doc _build/docs/html/
 %{_includedir}/%{name}
 %{_libdir}/libaom.so
+%{_libdir}/libaom.a
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Wed Apr 20 2022 YukariChiba <i@0x7f.cc> - 3.3.0-1
+- Upgrade version to 3.3.0
+
 * Fri May 07 2021 weidong <weidong@uniontech.com> - 1.0.0-1
 - Initial package.
